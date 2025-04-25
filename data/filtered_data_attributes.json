@@ -1,0 +1,338 @@
+[
+    {
+      "Attribute name": "subject_id",
+      "Description": "A unique identifier assigned to each patient, ensuring that any records associated with the same subject_id pertain to the same individual. As the primary key, subject_id maintains uniqueness across rows and is essential for tracking patients’ histories across multiple visits.",
+      "Values": ["19605867", "12437740", "15401422", "18922322", "16203314", "14685940", "13700088", "19848285", "17275231"]
+    },
+    {
+      "Attribute name": "hadm_id",
+      "Description": "A unique identifier for each hospitalization event, linking patient admissions to clinical data and enabling detailed analysis across individual hospital stays.",
+      "Values": ["24357541"]
+    },
+    {
+      "Attribute name": "admittime",
+      "Description": "Records the precise date and time when a patient is admitted to the hospital. Monitoring the duration of hospital stays, scheduling of treatments, and coordination of care among medical professionals.",
+      "Values": ["2164-12-29 12:48:00", "2168-05-08 02:57:00", "2178-05-10 09:34:00", "2137-01-06 12:31:00", "2125-08-19 13:11:00", "2147-07-05 18:51:00", "2160-01-31 03:49:00", "2162-08-09 08:56:00", "2129-05-28 19:00:00"]
+    },
+    {
+      "Attribute name": "dischtime",
+      "Description": "Records the exact date and time when a patient is officially discharged from the hospital. Is essential for tracking the duration of hospitalization, coordinating post-discharge care, and ensuring accurate billing and administrative processes.",
+      "Values": ["2162-08-13 12:40:00", "2168-05-10 16:30:00", "2160-02-05 18:30:00", "2137-01-11 14:24:00", "2178-05-15 14:00:00", "2147-07-16 15:11:00", "2129-06-01 18:45:00", "2125-08-20 13:20:00", "2165-01-03 15:00:00"]
+    },
+    {
+      "Attribute name": "admission_type",
+      "Description": "Categorizes the urgency or nature of the admission. Options include types such as 'AMBULATORY OBSERVATION', 'DIRECT EMER.', 'ELECTIVE', and 'URGENT', with a total of 9 categories. This attribute aids in triaging and analyzing the types of patient admissions received by the hospital.",
+      "Values": ["ELECTIVE", "DIRECT EMER.", "EW EMER.", "OBSERVATION ADMIT"]
+    },
+    {
+      "Attribute name": "admission_location",
+      "Description": "attribute identifies the specific location or setting from which a patient is transferred or referred prior to their admission to the hospital. This information is crucial for understanding the patient's healthcare journey, coordinating appropriate care pathways, and ensuring accurate documentation of patient admissions",
+      "Values": ["EMERGENCY ROOM", "PHYSICIAN REFERRAL", "CLINIC REFERRAL", "PACU"]
+    },
+    {
+      "Attribute name": "discharge_location",
+      "Description": "Specifies the destination or disposition of a patient upon discharge from the hospital. This attribute provides essential information about where the patient will continue their care or reside after leaving the hospital, which is crucial for coordinating post-discharge services, ensuring continuity of care, and facilitating accurate billing processes.",
+      "Values": ["SKILLED NURSING FACILITY", "HOME HEALTH CARE", "HOME"]
+    },
+    {
+      "Attribute name": "language",
+      "Description": "Language documented for the patient's stay.",
+      "Values": ["ENGLISH"]
+    },
+    {
+      "Attribute name": "marital_status",
+      "Description": "Marital status of the patient.",
+      "Values": ["MARRIED", "SINGLE"]
+    },
+    {
+      "Attribute name": "ethnicity",
+      "Description": "Ethnicity documented for the hospital stay.",
+      "Values": ["BLACK/AFRICAN AMERICAN", "WHITE", "HISPANIC/LATINO"]
+    },
+    {
+      "Attribute name": "lownormalvalue",
+      "Description": "The lower bound of the normal range for the measurement when applicable (e.g., 60 bpm for heart rate). This provides a reference for identifying values that fall outside expected physiological limits, aiding in the quick identification of abnormal readings.",
+      "Values": ["90", "60"]
+    },
+    {
+      "Attribute name": "status",
+      "Description": "Indicates the current condition or stage of an item or process, often related to orders, prescriptions, or lab results. Typical statuses include 'active,' 'completed,' 'pending,' and 'cancelled.'",
+      "Values": ["Discontinued", "Expired", "Inactive (Due to a change order)"]
+    },
+    {
+      "Attribute name": "ordercategorydescription",
+      "Description": " provides a comprehensive categorization of an order, offering essential context about the type of procedure or administration involved. This attribute aids in the accurate interpretation of procedural records by distinguishing between different administrative processes within medical orders. It complements other related attributes such as ordercategoryname, secondaryordercategoryname, and ordercomponenttypedescription, which collectively offer higher-level information about the order, including the type of administration and the role of the substance in the solution (e.g., main order parameter, additive, or mixed solution).",
+      "Values": ["ContinuousProcess", "Task"]
+    },
+    {
+      "Attribute name": "value",
+      "Description": "The numerical value associated with the procedure, if applicable. This field can represent data such as a measurement taken during the procedure, supporting detailed tracking of procedure outcomes.",
+      "Values": ["1", "1666", "2021", "1038", "3217", "244", "189"]
+    },
+    {
+      "Attribute name": "gender",
+      "Description": "Biological sex of the patient.",
+      "Values": ["F", "M"]
+    },
+    {
+      "Attribute name": "charttime",
+      "Description": "Represents the exact time when an observation was made. This is essential for interpreting each measurement in the context of the patient's health trajectory, showing the precise timing of events and trends during the stay.",
+      "Values": ["2151-03-10 05:57:00", "2151-03-10 16:34:00", "2151-03-10 10:35:00", "2151-03-09 14:15:00", "2151-03-09 16:00:00"]
+    },
+    {
+      "Attribute name": "stoptime",
+      "Description": "Specifies the intended end of the medication course, outlining the duration of treatment. These are critical for ensuring that therapy duration aligns with the prescriber’s intent.",
+      "Values": ["2115-06-05 05:00:00", "2115-06-06 05:00:00", "2115-06-15 19:00:00", "2115-06-05 09:00:00", "2115-06-14 18:00:00"]
+    },
+    {
+      "Attribute name": "stay_id",
+      "Description": "The transfers table also contains the stay_id. This is an artificially generated identifier which groups reasonably contiguous episodes of care. The stay_id present in icustays is derived from the stay_id values in the transfers table",
+      "Values": ["31323297", "30510914", "31197990", "36054279", "36275304", "31881741", "31601329", "30834232", "33257753"]
+    },
+    {
+      "Attribute name": "valueuom",
+      "Description": "The unit of measurement for the value field, providing context for any quantitative data associated with the procedure (e.g., 'mL' or 'mg').",
+      "Values": ["ml"]
+    },
+    {
+      "Attribute name": "emar_id",
+      "Description": "Uniquely identifies each entry in the EMAR table, allowing for precise tracking of each medication administration record.",
+      "Values": ["10004322-218", "10004322-215", "10004322-216", "10004322-213", "10004322-217", "10004322-211", "10004322-212", "10004322-214", "10004322-210"]
+    },
+    {
+      "Attribute name": "dose_val_rx",
+      "Description": "The exact quantity of the prescribed dose, indicating the amount the patient should receive per administration. Precise dosing is critical for therapeutic effectiveness and patient safety.",
+      "Values": ["0.5-1", "1", "3"]
+    },
+    {
+      "Attribute name": "dose_unit_rx",
+      "Description": "The unit of measurement for the dose (e.g., mg, mL), providing clarity on how the dose should be administered. This field helps prevent dosing errors and supports accurate medication administration.",
+      "Values": ["VIAL", "UDCUP", "TAB", "CAP"]
+    },
+    {
+      "Attribute name": "storetime",
+      "Description": "The timestamp when the medication administration event was recorded or verified by the healthcare provider. This value is essential for auditing purposes, ensuring that documentation aligns with actual administration times.",
+      "Values": ["2151-03-10 06:19:00", "2151-03-09 14:23:00", "2151-03-10 16:34:00", "2151-03-10 10:35:00", "2151-03-09 16:17:00"]
+    },
+    {
+      "Attribute name": "amount",
+      "Description": "Specifies the precise quantity of the medication given. This value is crucial for tracking dosages, ensuring patient safety, and maintaining accurate medication records.",
+      "Values": ["0.700000046", "7000002086", "399.2999984622", "49.9999987369", "20", "90.9091020003", "30"]
+    },
+    {
+      "Attribute name": "chartdate",
+      "Description": "Represents the specific date on which associated medical procedures or clinical activities are recorded in a patient's medical chart. This facilitate effective communication among healthcare providers, and ensuring that medical records reflect the sequence of events during a patient's hospital stay or treatment period.",
+      "Values": ["2151-03-10 06:19:00", "2151-03-09 14:23:00", "2151-03-10 16:34:00", "2151-03-10 10:35:00", "2151-03-09 16:17:00"]
+    },
+    {
+      "Attribute name": "label",
+      "Description": "The full, descriptive name of the measurement or observation, providing clarity and context (e.g., 'Heart Rate' for cardiac rhythm data). This label is essential for clinical users to understand the exact nature of the data point.",
+      "Values": ["ICU Admission date", "Heart rate Alarm - High", "Arterial Blood Pressure systolic", "Heart Rhythm", "Arterial Blood Pressure diastolic", "Heart Rate", "Arterial Blood Pressure mean", "Heart Rate Alarm - Low", "Arterial Blood Pressure Alarm - Low"]
+    },
+    {
+      "Attribute name": "first_careunit",
+      "Description": "The initial ICU unit to which the patient was admitted, such as the Coronary Care Unit (CCU) or Trauma Surgical Intensive Care Unit (TSICU). This attribute captures the starting point of the patient’s ICU care journey, providing insight into the specific type of intensive care initially required.",
+      "Values": ["Medical/Surgical Intensive Care Unit (MICU/SICU)", "Surgical Intensive Care Unit (SICU)", "Medical Intensive Care Unit (MICU)", "Cardiac Vascular Intensive Care Unit (CVICU)"]
+    },
+    {
+      "Attribute name": "short_description",
+      "Description": "Attribute provides a concise textual summary corresponding to the HCPCS_CD (Healthcare Common Procedure Coding System code) listed for each row in the dataset. This attribute serves as a quick reference to understand the specific medical procedure, service, or anatomical system associated with each HCPCS code. By offering clear and succinct descriptions, it enhances the readability and interpretability of medical records, billing documents, and administrative reports.",
+      "Values": ["Urinary system\t", "Cardiovascular system", "Musculoskeletal system", "Nervous system\t", "Female genital system", "Hospital observation services", "Digestive system", "Maternity care and delivery\t", "Hospital observation per hr"]
+    },
+    {
+      "Attribute name": "one_hr_max",
+      "Description": "The maximum allowable dose within a one-hour timeframe, ensuring safe dosing limits are adhered to for patient protection.",
+      "Values": ["None"]
+    },
+    {
+      "Attribute name": "amountuom",
+      "Description": "Denotes the unit of measurement (e.g., milliliters or milligrams), clarifying the administered dosage and ensuring consistent interpretation across different units.",
+      "Values": ["mg", "ml", "mcg"]
+    },
+    {
+      "Attribute name": "org_name",
+      "Description": "A textual descriptor identifying the organism observed, provides clinical context. Determining the organism, guiding accurate interpretation and subsequent clinical actions.",
+      "Values": ["STREPTOCOCCUS ANGINOSUS (MILLERI) GROUP", "STAPHYLOCOCCUS, COAGULASE NEGATIVE","ESCHERICHIA COLI","STAPH AUREUS COAG","CORYNEBACTERIUM SPECIES (DIPHTHEROIDS)"]
+    },
+    {
+      "Attribute name": "frequency",
+      "Description": "Indicates how often the medication should be administered (e.g., every 6 hours), supporting adherence to prescribed dosing intervals.",
+      "Values": ["QPM", "TID", "ONCE", "ASDIR", "BID", "QAM"]
+    },
+    {
+      "Attribute name": "statusdescription",
+      "Description": "Indicates the final state of a procedure as recorded in the procedureevents table. This attribute is crucial for understanding the completion status of various medical procedures, ensuring accurate tracking, and facilitating effective management of healthcare delivery processes. By capturing whether a procedure was completed, paused, or terminated, Provides valuable insights into workflow efficiency, resource utilization, and patient care outcomes.",
+      "Values": ["FinishedRunning","Paused ", "Stopped"] 
+    },
+    {
+      "Attribute name": "starttime",
+      "Description": "The exact date and time when the procedure began, marking the initiation of the intervention. This timestamp is critical for understanding the timing of procedures and assessing their impact on patient outcomes.",
+      "Values": ["2115-06-05 10:00:00", "2115-06-05 20:00:00", "2115-06-03 23:00:00", "2115-06-05 08:00:00", "2115-06-05 06:00:00"]
+    },
+    {
+      "Attribute name": "test_name",
+      "Description": "Specifies the performed test, describe what was measured. This classification supports the structured representation of clinical observations and their subsequent interpretation.",
+      "Values": ["URINE CULTURE","ANAEROBIC BOTTLE","TISSUE","MRSA SCREEN","FUNGAL CULTURE", "WOUND CULTURE","Blood Culture, Routine"]
+    },
+    {
+      "Attribute name": "careunit",
+      "Description": "Specifies the type of unit or ward where the patient is physically located during each transfer event. Examples include medical ICUs, surgical ICUs, medical wards, and nurseries. This attribute supports detailed analysis of patient location data, allowing for an understanding of the type and level of care provided at each stage of a patient's hospital stay.",
+      "Values": ["Med/Surg/GYN", "Med/Surg/Trauma", "Medicine/Cardiology", "Obstetrics (Postpartum & Antepartum)", "Emergency Department", "Cardiac Vascular Intensive Care Unit (CVICU)"]
+    },
+    {
+      "Attribute name": "fill_quantity",
+      "Description": "Records the amount of medication dispensed, reflecting the precise quantity provided to the patient, which is essential for inventory management and treatment accuracy.",
+      "Values": ["None"]
+    },
+    {
+      "Attribute name": "intime",
+      "Description": "Records the exact date and time when the patient is transferred into the current care unit, marking the beginning of their stay at that location.",
+      "Values": ["2147-03-20 00:40:44", "2201-06-19 01:58:00", "2123-06-02 17:25:29", "2126-12-18 18:19:00", "2148-07-13 19:10:00", "2203-06-02 21:08:00", "2123-10-12 13:31:39", "2182-09-26 19:38:00", "2148-07-09 04:05:13"]
+    },
+    {
+      "Attribute name": "ab_itemid",
+      "Description": "A coded identifier representing a specific antibiotic tested. , it ensures standardized referencing and facilitates consistent tracking within a structured FHIR Observation framework.",
+      "Values": ["90004","90005","90006","90007","90008","90009","90010","90011","90012"]
+    },
+    {
+      "Attribute name": "ab_name",
+      "Description": "Specifies the antibiotic under consideration,  that conveys essential clinical information. Identifying the antibiotic supports meaningful interpretation within an observation context.",
+      "Values": ["AMPICILLIN", "CEFAZOLIN", "TRIMETHOPRIM/SULFA", "NITROFURANTOIN", "GENTAMICIN", "TOBRAMYCIN", "CEFTAZIDIME", "CEFTRIAXONE", "AMPICILLIN/SULBACTAM", "PIPERACILLIN/TAZO"]
+    },
+    {
+      "Attribute name": "category",
+      "Description": "A broad classification of the measurement, helping in the grouping of similar observation types (e.g., 'Routine Vital Signs'). Categories provide organizational structure and are valuable for filtering, summarizing, and aggregating similar types of observations for clinical or research purposes.",
+      "Values": ["Alarms", "Routine Vital Signs", "ADT"]
+    },
+    {
+      "Attribute name": "highnormalvalue",
+      "Description": "The upper bound of the normal range for the measurement, where applicable (e.g., 100 bpm for heart rate). Together with the lower bound, this value supports clinical assessments by flagging values that may indicate health issues or require further examination.",
+      "Values": ["140", "90"]
+    },
+    {
+      "Attribute name": "icd_code",
+      "Description": "The ICD code that represents the specific diagnosis. Each ICD code uniquely identifies a medical condition, supporting standardized documentation across healthcare systems and enabling precise billing and clinical tracking.",
+      "Values": ["C779 ", "99859", "E8781", "99831", "73027", "99667", "F419", "49390", "99883"]
+    },
+    {
+      "Attribute name": "medication",
+      "Description": "The name of the medication dispensed, including details such as brand or generic name, ensuring accurate identification for both dispensing and monitoring purposes.",
+      "Values": ["Heparin", "Aspirin", "TraZODone", "CefTRIAXone", "Sodium Chloride 0.9%  Flush", "Docusate Sodium"]
+    },
+    {
+      "Attribute name": "pharmacy_id",
+      "Description": "A unique identifier for each dispensing event recorded in the pharmacy table, enabling linkage between dispensing records and related orders or medication administration records for auditing and tracking purposes.",
+      "Values": ["25706352", "8002769", "8459253", "7421114", "26979582"]
+    },
+    {
+      "Attribute name": "curr_service",
+      "Description": "The current service under which the patient is admitted, representing the specific care type or specialty they are receiving. Examples include MED (medical), TRAUM (trauma), SURG (surgery), etc. This field enables a clear identification of the type of care being provided at any point in time, which is crucial for analyzing service-specific patient outcomes and resource allocation.",
+      "Values": ["ORTHO", "MED", "PSYCH", "OBS", "TRAUM"]
+    },
+    {
+      "Attribute name": "itemid",
+      "Description": "Unique identifier for measurements recorded within the database. Each itemid represents a specific type of measurement, ensuring consistency and standardization. For instance, all measurements related to heart rate might share the same itemid (e.g., 220045). This attribute functions as an alternate primary key, guaranteeing that each row in the table is uniquely identifiable.",
+      "Values": ["225158", "225799", "221744", "226453", "220949", "222168"]
+    },
+    {
+      "Attribute name": "outtime",
+      "Description": "The precise date and time when the patient was discharged from the ICU, marking the end of the ICU encounter. Together with intime, this field supports analysis of ICU occupancy and patient flow.",
+      "Values": ["2173-02-24 13:45:00", "2174-09-27 14:47:14", "2173-07-24 14:00:15", "2119-06-07 14:39:00", "2126-05-07 22:06:00", "2136-09-15 00:48:00", "2146-05-06 12:02:51", "2189-11-23 12:45:38", "2171-06-09 19:32:41"]
+    },
+    {
+      "Attribute name": "location",
+      "Description": "Specifies the exact anatomical site on the body where a procedure, measurement, or sample collection is performed.",
+      "Values": ["Right Antecubital", "Left Accessory Cephalic", "Right Cephalic Lower Arm", "RL Post Forearm", "Left Radial", "R Wrist", "RL Ant Forearm", "Right Metacarpal"]
+    },
+    {
+      "Attribute name": "prod_strength",
+      "Description": "Describes the strength and form of the medication (e.g., '12.5 mg Tablet'), assisting in accurate prescribing and dispensing by specifying the product’s potency.",
+      "Values": ["mL", "mg", "gm", "TAB"]
+    },
+    {
+      "Attribute name": "event_txt",
+      "Description": "Captures additional details about the administration, with common values such as 'Administered,' 'Applied,' or 'Not Given.' For cases where the medication is not administered, event_txt provides insight into the reasons, such as patient refusal or clinical discretion.",
+      "Values": ["Flushed", "Administered", "Not Given"]
+    },
+    {
+      "Attribute name": "rate",
+      "Description": "Specifies the speed or frequency at which a drug or substance is administered to a patient within the defined time interval between starttime and endtime. This measurement is crucial for ensuring precise dosing, optimizing therapeutic efficacy, and maintaining patient safety",
+      "Values": ["10", "120", "9.9550047889", "51.125125157", "40.13"]
+    },
+    {
+      "Attribute name": "spec_type_desc",
+      "Description": "Describes the specimen type associated with the observed measurement,. This contextual detail ensures that the observed values are interpreted accurately.",
+      "Values": ["BLOOD CULTURE","URINE","SWAB","EYE", "BLOOD CULTURE - NEONATE"]
+    },
+    {
+      "Attribute name": "hcpcs_cd",
+      "Description": "represents a standardized five-character code from the Healthcare Common Procedure Coding System (HCPCS) that uniquely identifies a specific billed event or medical procedure performed during a patient's hospitalization",
+      "Values": ["47999", "59841", "58999", "36247", "99219", "G0378", "64822", "52235", "20610"]
+    },
+    {
+      "Attribute name": "icd_version",
+      "Description": "Specifies the version of the ICD code, such as 9 for ICD-9 or 10 for ICD-10. This attribute ensures that diagnoses are interpreted correctly, as coding conventions may differ across ICD versions. It is crucial for both clinical interpretation and compliance with billing requirements.",
+      "Values": ["9", "10"]
+    },
+    {
+      "Attribute name": "org_itemid",
+      "Description": "An identifier for the organism observed. Linking the organism to the observation aids in reproducible and structured data analysis.",
+      "Values": ["90760","80081","80002","80235","80075"]
+    },
+    {
+      "Attribute name": "rateuom",
+      "Description": "Specifies the corresponding unit (e.g., mg/hour), which is essential for understanding dosing speed, particularly in continuous infusion therapies.",
+      "Values": ["mcg/kg/min", "mL/hour", "mcg/hour"]
+    },
+    {
+      "Attribute name": "dod",
+      "Description": "Represents the de-identified date and time of a patient's death. Provides valuable mortality data for patients",
+      "Values" : ["2162-08-13 12:40:00", "2168-05-10 16:30:00", "2160-02-05 18:30:00", "2137-01-11 14:24:00", "2178-05-15 14:00:00", "2147-07-16 15:11:00", "2129-06-01 18:45:00", "2125-08-20 13:20:00", "2165-01-03 15:00:00"]
+    },
+    {
+      "Attribute name": "dilution_value",
+      "Description": "A numeric measure representing the antibiotic concentration applied. This supports precise interpretation of the observed antimicrobial susceptibility.",
+      "Values": ["2","4","16","0.25","64","32","0.5","1","8"]
+    },
+    {
+      "Attribute name": "interpretation",
+      "Description": "A coded or textual determination (e.g., Sensitive, Resistant, Intermediate) representing the organism’s observed response to the tested antibiotic. By capturing this outcome within the Observation resource’s framework, it provides immediate clinical direction and supports integrated decision support, ensuring that treatment choices are informed by standardized, evidence-based criteria.",
+      "Values": ["S","R","I"]
+    },
+    {
+      "Attribute name": "entertime",
+      "Description": "The date and time when the prescription was initially entered into the system, offering a timestamp for when the medication order was first processed.",
+      "Values": ["2115-06-05 09:16:26", "2115-06-05 05:38:07", "2115-06-03 22:25:08", "2115-06-04 13:03:19", "2115-06-05 05:56:04"]
+    },
+    {
+      "Attribute name": "anchor_age",
+      "Description": "denotes the age of a patient at the time of a specific reference year, known as the anchor_year which is associated with the patient's hospital admission. This attribute is part of a trio that includes anchor_year and anchor_year_group, collectively providing critical temporal context for patient admissions",
+      "Values": ["68", "70", "42", "20", "52", "24", "59", "29", "30"]
+    },
+    {
+      "Attribute name": "duration",
+      "Description": "specifies the numerical length of time or the quantity associated with a prescribed medication dose. This attribute is integral to the pharmacy table, which captures detailed information about medications that have been filled and prescribed to patients.",
+      "Values": ["1","8","0.5","16"]
+    },
+    {
+      "Attribute name": "endtime",
+      "Description": "The precise date and time when the procedure was completed, indicating the conclusion of the event. Together with starttime, this field allows for calculation of the procedure duration, providing insights into resource use and patient care.",
+      "Values": ["2140-07-25 17:12:00", "2140-07-23 06:01:00", "2141-10-10 13:46:00", "2140-07-24 06:22:00", "2141-10-09 12:01:00", "2121-12-24 06:24:00", "2141-10-09 14:35:00", "2121-12-24 20:33:00", "2140-07-24 12:20:00"]
+    },
+    {
+      "Attribute name": "spec_itemid",
+      "Description": "A coded identifier for the specimen type tested in the microbiology evaluation. Linking results to a standardized specimen type code enhances data consistency, enabling clear interpretation of organism presence and resistance patterns in a specific clinical context.",
+      "Values": ["70012","70079","70070","70033"]
+    },
+    {
+      "Attribute name": "route",
+      "Description": "The intended route of administration for the medication (e.g., oral, intravenous), specifying how the medication should be delivered. This field is vital for adherence to the prescribed administration method, impacting medication efficacy and safety.",
+      "Values": ["PO/NG", "IV"]
+    },
+    {
+      "Attribute name": "ordercategoryname",
+      "Description": "Categorizes medical orders based on the type of administration method used for medications or solutions. This classification is crucial for organizing and managing therapeutic interventions, ensuring that each order is accurately documented and appropriately administered. The categories represent the primary method of administration, while related attributes like secondaryOrderCategoryName and orderComponentTypeDescription provide additional details about the role and composition of each substance within the order (e.g., main parameter, additive, or mixed solution).",
+      "Values": ["01-Drips", "02-Fluids (Crystalloids)", "05-Med Bolus", "14-Oral/Gastric Intake"]
+    }
+  ]
+  

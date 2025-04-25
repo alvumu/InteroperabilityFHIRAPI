@@ -1,0 +1,849 @@
+[
+    {
+        "Attribute name": "provider",
+        "Description": "ID of healthcare provider.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "University Hospital, Most",
+            "3rd. Private Hospital, Brno",
+            "Municipal Hospital, Krumlov",
+            "General Hospital, Praque",
+            "Municipal Hospital, Melnik"
+        ],
+        "FHIR": "Organization"
+    },
+    {
+        "Attribute name": "age",
+        "Description": "The age attribute represents the age of a stroke patient at the onset of stroke symptoms.",
+        "Type": "IntegerField",
+        "Possible values": [
+            66,
+            51,
+            63,
+            67,
+            76
+        ],
+        "FHIR": "Patient"
+    },
+    {
+        "Attribute name": "arrival_mode",
+        "Description": "The arrival_mode attribute specifies the mode of transportation by which the patient arrived at the hospital. This detail is essential for understanding the urgency of the patient's medical response and identifying potential delays in stroke treatment. Possible values include: private transportation from GP: The patient was referred and transported privately from a general practitioner’s office. EMS from GP: Emergency Medical Services (EMS) transported the patient from a GP facility. stroke center: The patient was transferred from a specialized stroke center, indicating prior specialized care. private transportation from home/scene: The patient arrived via personal or non-medical transport from their home or directly from the scene of the incident. EMS from home/scene: Emergency Medical Services transported the patient from their home or directly from the scene where the stroke symptoms began.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "private transportation from GP",
+            "ems from GP",
+            "stroke center",
+            "private transportation from home/scene",
+            "ems from home/scene"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "atrial_fibrillation_or_flutter",
+        "Description": "The atrial_fibrillation_or_flutter attribute indicates whether the patient has been diagnosed with atrial fibrillation (AF) or atrial flutter—two types of irregular heart rhythms that significantly elevate the risk of stroke through clot formation. It helps clinicians understand if the patient is currently affected by these cardiac conditions, which can have a direct impact on treatment decisions and overall patient management. The possible values for this attribute are: detected: Indicates that atrial fibrillation or flutter has been identified during screening or recent evaluation. known AF: Signifies that the patient has a pre-existing, documented diagnosis of atrial fibrillation. no AF: Denotes that the patient does not exhibit atrial fibrillation or atrial flutter. not screened: Means that no screening for atrial fibrillation or flutter has been performed. ",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "detected",
+            "known AF",
+            "no AF",
+            "not screened"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "before_onset_antidiabetics",
+        "Description": "The before_onset_antidiabetics attribute indicates whether the patient was taking antidiabetic medication prior to hospital admission or before the stroke event.  Knowing if the patient was on antidiabetic therapy can help clinicians evaluate baseline glycemic control, consider possible drug interactions, and plan appropriate adjustments in medication during hospitalization.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_antihypertensives",
+        "Description": "The before_onset_antihypertensives attribute indicates whether the patient was taking antihypertensive medication prior to hospital admission or before the stroke event. This information is essential for assessing the pre-existing management of hypertension, a major risk factor for stroke and other cardiovascular conditions. Documenting the patient’s use of antihypertensive therapy before the event helps clinicians evaluate treatment effectiveness, identify potential adherence issues, and tailor ongoing management strategies.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_any_anticoagulant",
+        "Description": "The before_onset_any_anticoagulant attribute indicates whether the patient was taking any anticoagulant medication prior to hospital admission or before the stroke event. Anticoagulants are prescribed to prevent blood clot formation, particularly in patients with conditions such as atrial fibrillation, deep vein thrombosis, or mechanical heart valves.Documenting this information is crucial for assessing the patient’s bleeding risk and for guiding acute stroke management strategies.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_any_antiplatelet",
+        "Description": "The before_onset_any_antiplatelet attribute indicates whether the patient was taking any antiplatelet medication prior to hospital admission or before the stroke event. Antiplatelet drugs, such as aspirin or clopidogrel, are commonly prescribed to reduce the risk of blood clot formation in patients with cardiovascular disease, previous strokes, or a high vascular risk profile",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_asa",
+        "Description": "The before_onset_asa attribute indicates whether the patient was taking aspirin (acetylsalicylic acid, ASA) prior to hospital admission or before the stroke event. Aspirin is a widely used antiplatelet medication that helps prevent blood clots, thereby reducing the risk of ischemic stroke, heart attack, and other cardiovascular events. Documenting prior aspirin use is essential for effective stroke management as it directly influences treatment decisions and considerations regarding bleeding risk.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_clopidogrel",
+        "Description": "Indicates whether the patient was taking the antiplatelet drug clopidogrel before the onset of stroke symptoms or hospital admission. This information helps assess the patient's baseline antiplatelet status and potential risks of bleeding or treatment considerations.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_contraception",
+        "Description": "The before_onset_contraception attribute indicates whether the patient was using hormonal contraception prior to the onset of stroke symptoms or hospital admission. This information is particularly important for identifying potential risk factors, especially in women of childbearing age, since hormonal contraceptive use can influence clotting mechanisms and may increase the risk of thromboembolic events in susceptible individuals. Recording this detail not only provides insight into the patient’s hormonal and cardiovascular profile but also aids clinicians in tailoring stroke prevention strategies and assessing overall risk.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_other_anticoagulant",
+        "Description": "The before_onset_other_anticoagulant attribute indicates whether the patient was taking any anticoagulant medication not specifically listed—such as new or investigational agents—prior to hospital admission or the stroke event. Documenting this information is crucial for a comprehensive assessment of the patient’s anticoagulation status, as it helps in evaluating bleeding risk and determining the need for reversal strategies if required. This attribute provides clinicians with insight into any atypical or emerging anticoagulant therapies that may influence the patient's management during acute stroke care.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_statin",
+        "Description": "The before_onset_statin attribute indicates whether the patient was on a statin medication prior to hospital admission or before the onset of stroke symptoms. Statins are widely prescribed to manage hyperlipidemia by lowering cholesterol levels and stabilizing atherosclerotic plaques, thereby playing a crucial role in the prevention of cardiovascular events, including strokes. Documenting prior statin use is essential for evaluating the patient’s lipid management strategy and overall cardiovascular risk profile.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "before_onset_warfarin",
+        "Description": "The before_onset_warfarin attribute indicates whether the patient was receiving warfarin—a vitamin K antagonist—prior to the onset of stroke symptoms or hospital admission. Warfarin is an oral anticoagulant used to prevent thrombotic events in patients with conditions such as atrial fibrillation, mechanical heart valves, or venous thromboembolism. Documenting the prior use of warfarin is crucial for understanding the patient’s anticoagulation management, as it directly impacts treatment decisions, especially regarding the need for reversal strategies in emergency situations such as hemorrhagic stroke or during invasive procedures.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationStatement"
+    },
+    {
+        "Attribute name": "bleeding_reason_aneurysm",
+        "Description": "The bleeding_reason_aneurysm attribute indicates whether a cerebral aneurysm was identified as the cause of the patient's hemorrhagic stroke. Documenting this information is critical for accurately characterizing the source of bleeding, which in turn guides the selection of appropriate treatment strategies such as endovascular coiling or surgical clipping. A confirmed cerebral aneurysm not only informs the immediate clinical management but also has significant implications for long-term patient care, including risk assessment and follow-up planning.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "bleeding_reason_malformation",
+        "Description": "The bleeding_reason_malformation attribute specifies that an arteriovenous malformation (AVM) was identified as the cause of the patient's hemorrhagic stroke. AVMs are abnormal, tangled connections between arteries and veins that can rupture, leading to intracranial bleeding. Documenting the presence of an AVM is critical for guiding acute management strategies and long-term treatment planning, as it may necessitate specialized interventions such as surgical resection, embolization, or other targeted therapies.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "bleeding_reason_other",
+        "Description": "The bleeding_reason_other attribute indicates that another, less common or unspecified cause of intracranial hemorrhage was identified. Examples of such causes include conditions like vasculitis, coagulopathy, or other rare disorders that do not fall into the more common categories. Documenting this information is crucial because it helps guide further diagnostic evaluations and tailor treatment strategies when standard causes are ruled out. ",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "bolus_timestamp",
+        "Description": "The bolus_timestamp attribute records the precise date and time—or the best available estimate—when intravenous thrombolysis (bolus) was initiated. This timestamp is critical for evaluating key performance metrics in stroke care, particularly the door-to-needle time, which is essential for assessing the efficiency of treatment delivery",
+        "Type": "DateTimeField",
+        "Possible values": [
+            "22/04/2024 0:48",
+            "27/01/2024 0:55",
+            "04/01/2024 0:43",
+            "25/01/2024 1:10",
+            "19/02/2024 1:11"
+        ],
+        "FHIR": "MedicationAdministration"
+    },
+    {
+        "Attribute name": "carotid_arteries_imaging",
+        "Description": "Indicates whether imaging of the carotid arteries (e.g., Doppler ultrasound, CTA, MRA) was performed to detect possible stenosis or occlusions.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ]
+    },
+    {
+        "Attribute name": "diastolic_pressure",
+        "Description": "Records the first diastolic blood pressure measurement (in mmHg) upon admission or soon after stroke onset. Diastolic pressure can influence stroke management and outcome.",
+        "Type": "IntegerField",
+        "Possible values": [
+            108,
+            105,
+            109,
+            70,
+            112
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "discharge_any_anticoagulant",
+        "Description": "Indicates whether any anticoagulant (such as warfarin or a NOAC) was prescribed at discharge for secondary stroke prevention, particularly in patients with atrial fibrillation or related conditions. This attribute guides long-term anticoagulation management and helps mitigate the risk of thromboembolic events.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_any_antiplatelet",
+        "Description": "Indicates whether any antiplatelet medication (e.g., aspirin, clopidogrel) was prescribed at discharge for the secondary prevention of ischemic stroke. ",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_asa",
+        "Description": "Specifies whether aspirin (acetylsalicylic acid) was prescribed at discharge. As a widely used antiplatelet agent for secondary stroke prevention, its inclusion in the discharge plan is critical for reducing future cardiovascular risks.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_clopidogrel",
+        "Description": "Indicates whether clopidogrel was prescribed at discharge for secondary prevention. Often chosen for patients who are aspirin-intolerant or as part of dual antiplatelet therapy, its documentation is vital for guiding ongoing treatment strategies.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_date",
+        "Description": "Records the date of the patient’s discharge from acute or post-acute care—or the date of death, if applicable. This information is essential for calculating the length of stay, assessing treatment timelines, and evaluating overall outcomes.",
+        "Type": "DateField",
+        "Possible values": [
+            "10/03/2024",
+            "24/04/2024",
+            "20/03/2024",
+            "29/04/2024",
+            "28/01/2024"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "discharge_destination",
+        "Description": "Describes the setting to which the patient was discharged (e.g., home, another hospital, social care facility, or deceased). This attribute reflects the patient’s outcome and the level of care required post-discharge, thereby informing future care planning.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "social care",
+            "another hospital",
+            "same hospital",
+            "home",
+            "dead"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "discharge_facility_department",
+        "Description": "Specifies the type of department (e.g., neurology, acute rehabilitation, etc.) where the patient continued care or was transferred after leaving the primary stroke unit. This information is key to understanding the patient’s care pathway and ensuring continuity of specialized treatment.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "acute rehabilitation",
+            "another department",
+            "post-care bed",
+            "neurology"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "discharge_heparin",
+        "Description": "Indicates whether heparin (either unfractionated or low-molecular-weight) was prescribed at discharge for anticoagulation or bridging therapy. Documenting heparin use helps ensure continuity in anticoagulant management and facilitates appropriate follow-up care.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_mrs",
+        "Description": "Records the modified Rankin Scale (mRS) score at discharge, which quantifies the patient’s degree of disability or dependence. This score is instrumental in evaluating functional outcomes and planning rehabilitation or long-term care, with a score of 6 indicating death.",
+        "Type": "IntegerField",
+        "Possible values": [
+            4,
+            5,
+            0,
+            2,
+            1
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "discharge_nihss_score",
+        "Description": "Records the NIH Stroke Scale (NIHSS) score at discharge, measuring the residual neurological deficits following stroke. This score is used to assess improvements or deteriorations in stroke severity during hospitalization and informs decisions regarding further rehabilitation.",
+        "Type": "IntegerField",
+        "Possible values": [
+            4.0,
+            8.0,
+            11.0,
+            3.0,
+            20.0
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "discharge_other",
+        "Description": "Indicates whether other (non-listed) medications were prescribed at discharge, capturing additional therapies that are not covered in the standard categories.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_statin",
+        "Description": "Indicates whether a statin medication was prescribed at discharge. Statins are a cornerstone of secondary prevention in atherosclerotic stroke and play a vital role in managing cholesterol levels to reduce future cardiovascular risk.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "discharge_warfarin",
+        "Description": "Specifies whether warfarin—a vitamin K antagonist—was prescribed at discharge. Warfarin is used for long-term anticoagulation, particularly in patients with atrial fibrillation, and its documentation is essential for guiding ongoing stroke prevention strategies.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "MedicationRequest"
+    },
+    {
+        "Attribute name": "door_to_groin",
+        "Description": "This attribute measures the time (in minutes) from hospital arrival to the groin puncture for mechanical thrombectomy. As a key performance metric in acute ischemic stroke care, a shorter door-to-groin time is associated with better clinical outcomes. Recording this interval is essential for monitoring and improving workflow efficiency during endovascular treatment.",
+        "Type": "IntegerField",
+        "Possible values": [
+            31.0,
+            86.0,
+            94.0,
+            111.0,
+            50.0
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "door_to_needle",
+        "Description": "This attribute measures the time (in minutes) from the patient’s arrival at the hospital to the start of intravenous thrombolysis (either needle insertion or bolus administration). Known as the door-to-needle time, this metric is a key performance indicator in acute ischemic stroke care and directly correlates with patient outcomes.",
+        "Type": "IntegerField",
+        "Possible values": [
+            48.0,
+            55.0,
+            43.0,
+            70.0,
+            71.0
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "first_hospital",
+        "Description": "This attribute determines if the reporting hospital was the first medical facility to admit the patient for the current stroke episode. It helps differentiate between primary admissions and cases where the patient was transferred from another facility.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "hospital_timestamp",
+        "Description": "This attribute represents the exact or estimated date and time at which the patient was admitted to the hospital’s stroke care facility. It serves as a critical reference point for calculating various time-sensitive metrics such as door-to-needle time and other treatment delays.",
+        "Type": "DateTimeField",
+        "Possible values": [
+            "07/03/2024 0:00",
+            "22/04/2024 0:00",
+            "16/03/2024 0:00",
+            "05/03/2024 0:00",
+            "28/04/2024 0:00"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "hospitalized_in",
+        "Description": "This attribute indicates the level of care provided during the patient’s initial day in the hospital, specifying whether the patient was placed in a standard bed, a monitored bed, or an ICU/stroke unit. It reflects the initial intensity of care and is a key indicator of the patient’s clinical status upon admission.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "monitored bed",
+            "icu/stroke unit",
+            "standard bed"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "imaging_done",
+        "Description": "This attribute indicates whether any brain imaging was performed to evaluate the stroke. It captures not only if imaging (such as CT or MRI) took place, but also where it was conducted—whether at the reporting hospital or elsewhere. This detail is crucial because the location of imaging can affect treatment timelines, diagnostic accuracy, and the continuity of care.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "elsewhere",
+            "yes",
+            "no"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "imaging_timestamp",
+        "Description": "This attribute records the exact or best-estimated date and time when the first CT or MR scan was performed at the reporting hospital. It is essential for calculating the door-to-imaging time—a key performance indicator in acute stroke management",
+        "Type": "DateTimeField",
+        "Possible values": [
+            "07/03/2024 4:26",
+            "22/04/2024 0:23",
+            "16/03/2024 0:29",
+            "05/03/2024 0:26",
+            "28/04/2024 0:18"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "imaging_type",
+        "Description": "This attribute specifies the modality of the initial brain imaging performed, such as CT, CTA, MR DWI/FLAIR, or combinations that include perfusion or angiography sequences. The imaging type can influence the diagnostic insights gained—for example, detailed vascular imaging may be critical for revascularization decisions—thus affecting subsequent treatment strategies.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "CT CTA perfusion",
+            "CT CTA",
+            "MR DWI/FLAIR MRA",
+            "CT",
+            "MR DWI/FLAIR"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "inhospital_stroke",
+        "Description": "This attribute specifies whether the stroke occurred while the patient was already hospitalized for another condition at the same hospital. In-hospital strokes often present different diagnostic and management challenges compared to strokes that occur in the community, including variations in response times and treatment protocols",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "mt_complications_perforation",
+        "Description": "This attribute documents whether vessel perforation occurred during the mechanical thrombectomy. Vessel perforation is a serious complication that can lead to hemorrhage and significantly impact patient outcomes.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "mtici_score",
+        "Description": "This attribute records the final Modified Treatment in Cerebral Infarction (mTICI) score obtained after the mechanical thrombectomy procedure. The mTICI score quantifies the degree of reperfusion achieved, where 0 indicates no perfusion and 3 represents complete perfusion. This score is a critical prognostic marker that helps determine the success of the intervention and correlates with clinical outcomes.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "3",
+            "2C",
+            "2B",
+            "0",
+            "2A"
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "nihss_score",
+        "Description": "This attribute indicates the patient’s National Institutes of Health Stroke Scale (NIHSS) score upon admission. The NIHSS score, which ranges from 0 to 42, quantitatively assesses the severity of neurological deficits, thereby guiding treatment decisions and prognostication.",
+        "Type": "IntegerField",
+        "Possible values": [
+            12,
+            20,
+            26,
+            22,
+            30
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "no_thrombectomy_reason",
+        "Description": "This attribute specifies the main reason why mechanical thrombectomy was not performed in an ischemic stroke patient. Typical reasons include the absence of a large vessel occlusion, the patient falling outside the therapeutic time window, the patient being transferred elsewhere, pre-existing disability, or the procedure not being available.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "no large vessel occlusion",
+            "time window",
+            "transferred elsewhere",
+            "disability",
+            "not available"
+        ],
+        "FHIR": "Observation,RiskAssesment"
+    },
+    {
+        "Attribute name": "no_thrombolysis_reason",
+        "Description": "This attribute states the principal reason why intravenous thrombolysis was not administered to the patient. Common reasons might include missing the treatment time window, patient refusal, contraindications, or lack of drug availability",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "done elsewhere",
+            "cost of treatment",
+            "not available",
+            "time window",
+            "consent"
+        ],
+        "FHIR": "Observation,RiskAssesment"
+    },
+    {
+        "Attribute name": "onset_date",
+        "Description": "This attribute records the date on which the initial stroke symptoms began. It is essential for determining eligibility for acute reperfusion therapies, such as thrombolysis or thrombectomy, as well as for calculating the various stroke timelines.",
+        "Type": "DateField",
+        "Possible values": [
+            "06/03/2024",
+            "21/04/2024",
+            "15/03/2024",
+            "04/03/2024",
+            "27/04/2024"
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "onset_time",
+        "Description": "This attribute captures the time at which the initial stroke symptoms started. When combined with the onset date, it provides a precise indication of the stroke’s onset, which is fundamental for establishing the therapeutic window for acute interventions",
+        "Type": "TimeField",
+        "Possible values": [
+            "20:49:00",
+            "19:48:00",
+            "21:57:00",
+            "19:56:00",
+            "21:22:00"
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "post_acute_care",
+        "Description": "This attribute indicates whether the patient required hospitalization beyond 24 hours after the acute phase of stroke care.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "Encounter"
+    },
+    {
+        "Attribute name": "prestroke_mrs",
+        "Description": "This attribute records the patient’s modified Rankin Scale (mRS) score prior to the current stroke onset. The prestroke mRS provides a baseline measure of the patient’s functional status and level of independence before the stroke occurred.",
+        "Type": "IntegerField",
+        "Possible values": [
+            1.0,
+            2.0,
+            4.0,
+            5.0,
+            3.0
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "puncture_timestamp",
+        "Description": "This attribute records the date and time (or best estimate) when the groin puncture was performed during mechanical thrombectomy. The puncture timestamp is crucial for calculating procedural times, such as door-to-puncture and overall procedure duration.",
+        "Type": "DateTimeField",
+        "Possible values": [
+            "09/01/2024 0:31",
+            "25/06/2024 1:26",
+            "09/04/2024 1:34",
+            "23/03/2024 1:51",
+            "11/01/2024 0:50"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "reperfusion_timestamp",
+        "Description": "This attribute captures the date and time when blood flow was successfully restored (reperfusion) following mechanical thrombectomy. The reperfusion timestamp is used to calculate procedural efficiency and is critical for correlating the timing of reperfusion with clinical outcomes.",
+        "Type": "DateTimeField",
+        "Possible values": [
+            "09/01/2024 2:38",
+            "25/06/2024 3:01",
+            "09/04/2024 2:37",
+            "11/01/2024 3:19",
+            "25/03/2024 2:29"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "risk_atrial_fibrillation",
+        "Description": "This attribute indicates whether the patient has a history of atrial fibrillation or atrial flutter. As a key risk factor for cardioembolic stroke, atrial fibrillation significantly increases the risk of clot formation.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_coronary_artery_disease_or_myocardial_infarction",
+        "Description": "This attribute indicates whether the patient has a history of coronary artery disease (CAD) or myocardial infarction (MI). CAD and MI share common risk factors with stroke and can influence overall cardiovascular management.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_diabetes",
+        "Description": "This attribute indicates a known history of diabetes mellitus. Diabetes is a significant risk factor for both small and large vessel cerebrovascular disease due to its effects on vascular integrity and metabolism.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_hyperlipidemia",
+        "Description": "This attribute specifies whether the patient has a history of hyperlipidemia or dyslipidemia. Elevated lipid levels contribute to atherosclerotic changes, increasing the risk for ischemic stroke. Accurate documentation of hyperlipidemia is essential for guiding lipid-lowering interventions and secondary prevention strategies aimed at reducing overall vascular risk.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_hypertension",
+        "Description": "This attribute indicates whether the patient has a known history of hypertension. Hypertension is one of the most significant modifiable risk factors for both ischemic and hemorrhagic strokes.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_previous_hemorrhagic_stroke",
+        "Description": "Indicates if the patient has experienced a hemorrhagic stroke in the past, relevant for guiding antithrombotic therapy decisions.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_previous_ischemic_stroke",
+        "Description": "This attribute indicates whether the patient has a history of ischemic stroke or transient ischemic attack (TIA). A previous ischemic event increases the risk of recurrence and is a key consideration in secondary prevention planning",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "risk_previous_stroke",
+        "Description": "This attribute specifies whether the patient has had any previous stroke, whether ischemic or hemorrhagic. The occurrence of a prior stroke significantly influences prognosis and treatment decisions, as it reflects underlying vascular pathology and can impact the choice of secondary prevention measures.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "sex",
+        "Description": "This attribute records the biological sex of the patient, typically categorized as male or female.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "female",
+            "male"
+        ],
+        "FHIR": "Patient"
+    },
+    {
+        "Attribute name": "stroke_etiology_cardioembolism",
+        "Description": "This attribute specifies that the stroke etiology was determined to be cardioembolic in nature, such as from atrial fibrillation or another cardiac source of emboli. Cardioembolic strokes require specific management strategies including anticoagulation",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "stroke_etiology_cryptogenic_stroke",
+        "Description": "This attribute indicates that the stroke is of unknown origin (cryptogenic), which may include cases categorized as Embolic Stroke of Undetermined Source (ESUS) after thorough investigation.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "VERDADERO",
+            "FALSO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "stroke_etiology_la_atherosclerosis",
+        "Description": "This attribute specifies that large artery atherosclerosis (for example, significant stenosis in the carotid or basilar arteries) was identified as the cause of the stroke",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "stroke_etiology_lacunar",
+        "Description": "This attribute indicates that the stroke is attributed to small vessel disease, often manifesting as a lacunar infarct. Lacunar strokes are typically due to lipohyalinosis or microatheroma in the penetrating arteries, frequently associated with chronic hypertension or diabetes.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "stroke_etiology_other",
+        "Description": "This attribute specifies that the stroke etiology falls into a rarer category not covered by the main classifications, such as vasculitis or hypercoagulable states. Identifying an “other” etiology is important for recognizing unique risk factors that may require specialized diagnostic and therapeutic approaches.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "stroke_type",
+        "Description": "This attribute records the final stroke diagnosis, categorizing the event as ischemic, intracerebral hemorrhage, cerebral venous thrombosis, transient ischemic attack (TIA), or undetermined.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "ischemic",
+            "intracerebral hemorrhage",
+            "cerebral venous thrombosis",
+            "undetermined",
+            "transient ischemic"
+        ],
+        "FHIR": "Condition"
+    },
+    {
+        "Attribute name": "swallowing_screening_done",
+        "Description": "This attribute specifies whether a formal swallowing assessment was performed to detect dysphagia, a common complication after stroke that can lead to aspiration pneumonia. The screening typically involves standardized tests and helps determine if the patient is at risk for swallowing difficulties.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "no",
+            "yes",
+            "not applicable"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "swallowing_screening_timing",
+        "Description": "This attribute specifies the time frame within which the swallowing screening was performed after stroke onset, such as within 4 hours, within 24 hours, or after 24 hours. Early screening is crucial to rapidly identify dysphagia and prevent aspiration-related complications.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "within 4 hour",
+            "within 24 hour",
+            "after 24 hour"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "swallowing_screening_type",
+        "Description": "This attribute indicates the specific test or tool used for the swallowing screening, such as the Gugging Swallowing Screen (GUSS), water swallow test, ASSIST, or another standardized method. The choice of screening tool can affect the sensitivity and specificity of dysphagia detection.",
+        "Type": "ForeignKey",
+        "Possible values": [
+            "GUSS",
+            "water test",
+            "ASSIST",
+            "other"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "systolic_pressure",
+        "Description": "This attribute records the first systolic blood pressure measurement (in mmHg) taken upon admission or soon after stroke onset. Systolic pressure is a key vital sign that influences both ischemic and hemorrhagic stroke management.",
+        "Type": "IntegerField",
+        "Possible values": [
+            130,
+            121,
+            136,
+            138,
+            161
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "three_m_mrs",
+        "Description": "This attribute records the modified Rankin Scale (mRS) score at 3 months post-discharge. The mRS score is a widely used measure of functional outcome and disability following a stroke, with a score of 6 indicating death.",
+        "Type": "IntegerField",
+        "Possible values": [
+            5.0,
+            4.0,
+            0.0,
+            3.0,
+            1.0
+        ],
+        "FHIR": "Observation"
+    },
+    {
+        "Attribute name": "thrombectomy",
+        "Description": "This attribute indicates whether the patient with acute ischemic stroke underwent mechanical thrombectomy, an endovascular procedure aimed at removing large vessel clots. Thrombectomy is a critical reperfusion therapy that can substantially improve outcomes when performed within an appropriate time window.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "thrombolysis",
+        "Description": "This attribute indicates whether the patient with acute ischemic stroke received intravenous thrombolysis as a reperfusion therapy. Thrombolysis is a central component of acute stroke management, aiming to dissolve clots and restore blood flow.",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Procedure"
+    },
+    {
+        "Attribute name": "wakeup_stroke",
+        "Description": "This attribute indicates that the patient awoke with stroke symptoms, making the precise onset time unknown. Wake-up strokes present a challenge in determining the therapeutic window for acute interventions",
+        "Type": "BooleanField",
+        "Possible values": [
+            "FALSO",
+            "VERDADERO"
+        ],
+        "FHIR": "Observation"
+    }
+]
