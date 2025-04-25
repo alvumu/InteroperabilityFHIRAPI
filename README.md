@@ -11,21 +11,22 @@ API REST con FastAPI para facilitar la interoperabilidad con FHIR y aplicar téc
 ## INSTALACIÓN
 
 1. Clona el repositorio:
+   ```bash
    git clone https://github.com/alvumu/InteroperabilityFHIRAPI.git
    cd InteroperabilityFHIRAPI
-
-2. Crea y activa el entorno virtual:
+   ```
+3. Crea y activa el entorno virtual:
    python3 -m venv .venv
    # Linux/macOS
    source .venv/bin/activate
    # Windows PowerShell
    .\.venv\Scripts\Activate.ps1
 
-3. Actualiza pip e instala dependencias:
+4. Actualiza pip e instala dependencias:
    pip install --upgrade pip
    pip install -r requirements.txt
 
-4. Descarga recursos de NLP:
+5. Descarga recursos de NLP:
    python -m spacy download en_core_web_sm
    python -m nltk.downloader stopwords punkt
 
