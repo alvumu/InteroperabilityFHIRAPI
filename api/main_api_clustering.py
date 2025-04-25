@@ -194,7 +194,7 @@ def compute_openai_embedding(text):
         # Basic check for v1.x (requires 'openai' v1+ and client initialized elsewhere or globally)
         # You might need to explicitly initialize 'client = OpenAI()' globally if using v1+
         elif 'client' in globals() and hasattr(globals()['client'], 'embeddings'):
-             client = OpenAI(api_key=OPENAI_API_KEY)
+             client = openai.OpenAI(api_key=OPENAI_API_KEY)
              response = client.embeddings.create(input=text, model=openai_model) # Use the correct model variable
              embedding = response.data[0].embedding
         else:
@@ -1371,6 +1371,8 @@ async def cluster_attributes_endpoint(
     Triggers the attribute clustering pipeline. Reads attributes, clusters them up to max_k,
     selects the best, and returns the results. Writes results to a predefined file.
     """
+    print("AAAAAAAAAAAAAAAAAAAAAAA")
+    print(OPENAI_API_KEY, nlp, embedding_models_instances) # Debugging line
     if not all([OPENAI_API_KEY, nlp, embedding_models_instances]): # Basic checks
         raise HTTPException(status_code=503, detail="Server prerequisites not met (OpenAI Key, SpaCy, Models).")
     try:
