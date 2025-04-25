@@ -1,0 +1,12 @@
+# requirements.txt
+numpy
+spacy
+nltk
+scikit-learn
+sentence-transformers
+openai
+torch
+requests
+farm-haystack[openai]
+fastapi
+uvicorn
