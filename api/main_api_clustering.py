@@ -24,10 +24,10 @@ import requests  # For making HTTP requests
 # Make sure haystack is installed: pip install farm-haystack[openai]
 # If using older openai (<1.0), compatibility might be needed, otherwise ensure haystack supports openai v1+
 try:
-    from haystack.document_stores import InMemoryDocumentStore
-    from haystack.nodes.retriever.dense import EmbeddingRetriever
-    from haystack.nodes import PreProcessor
-    from haystack.schema import Document # Import Document schema
+    from haystack.document_stores.in_memory import InMemoryDocumentStore
+    from haystack.components.retrievers import InMemoryEmbeddingRetriever
+    from haystack.components.preprocessors import DocumentPreprocessor
+    from haystack import Document # Import Document schema
     print("Haystack components imported successfully.")
 except ImportError as e:
     print(f"ERROR: Failed to import Haystack components. Make sure Haystack is installed ('pip install farm-haystack[openai]'). Details: {e}")
@@ -96,6 +96,7 @@ try:
     for key in required_model_keys:
          print(f"  Loading model: {key}...")
          embedding_models_instances[key] = SentenceTransformer(key)
+         print(embedding_models_instances[key])
 
     # Function references for OpenAI and Combined (used by both potentially)
     embedding_models_instances["openai_embedding"] = lambda text: compute_openai_embedding(text) # Pass the function itself
@@ -292,7 +293,7 @@ def cluster_and_evaluate(attribute_embeddings, max_k: int):
     print(f"Cluster evaluation will explore up to {max_k} clusters (starting from {min_k}).")
     cluster_range = range(min_k, max_k + 1)
     clustering_algorithms = { # Using the more extensive list from the user's provided clustering script
-        'KMeans': {'model': KMeans,'params': {'n_clusters': cluster_range, 'random_state': [42], 'n_init':'auto'}},
+        'KMeans': {'model': KMeans,'params': {'n_clusters': cluster_range, 'random_state': [42]}},
         'AgglomerativeClustering': {'model': AgglomerativeClustering,'params': {'n_clusters': cluster_range, 'metric': ['euclidean', 'cosine'],'linkage': ['ward', 'complete', 'average', 'single']}},
         'DBSCAN': {'model': DBSCAN,'params': {'eps': [0.5, 0.3, 0.1, 0.05, 0.01], 'min_samples': [6, 7, 8, 10, 15],'metric': ['euclidean', 'cosine']}},
         'Birch': {'model': Birch,'params': {'n_clusters': cluster_range, 'threshold': [0.05, 0.1, 0.5, 1.0]}},
@@ -512,7 +513,7 @@ def create_documents_from_passages_with_chunks(passages, chunk_size=512, chunk_o
         return []
 
     try:
-        preprocessor = PreProcessor(
+        preprocessor = DocumentPreprocessor(
             clean_empty_lines=True,
             clean_whitespace=True,
             clean_header_footer=False, # Assume no headers/footers in combined text
@@ -552,7 +553,7 @@ def create_documents_from_passages_with_chunks(passages, chunk_size=512, chunk_o
     return haystack_documents
 
 # Define the custom retriever class
-class CombinedRetriever(EmbeddingRetriever):
+class CombinedRetriever(InMemoryEmbeddingRetriever):
     """Custom Haystack Retriever using the combined embedding function."""
     def __init__(self, document_store, model_general, model_general2, model_medico, model_openai, **kwargs):
         # Pass a model name Haystack recognizes for super init
@@ -609,7 +610,7 @@ class CombinedRetriever(EmbeddingRetriever):
 
 # --- Core Logic Functions ---
 
-def run_clustering_only_pipeline(attribute_path: str, max_k: int):
+def run_clustering_only_pipeline(attribute_path: str, max_k: int, embedding_models_instances: dict):
     # (Keep existing run_clustering_only_pipeline function)
     # ... (code as provided previously) ...
     print(f"Starting clustering pipeline (max_k={max_k})")
@@ -677,6 +678,8 @@ def run_rag_pipeline(cluster_file_path: str, resource_path: str, json_schemas_pa
         model_gen2 = embedding_models_instances.get('sentence-transformers/all-mpnet-base-v2')
         model_med = embedding_models_instances.get('abhinand/MedEmbed-large-v0.1')
         openai_func = embedding_models_instances.get('openai_embedding')
+
+        print(openai_func) # Debug print to check if function is loaded correctly
 
         if not all([model_gen, model_gen2, model_med, openai_func]):
              missing = [name for name, model in [('MiniLM', model_gen), ('MPNet', model_gen2), ('MedEmbed', model_med), ('OpenAI', openai_func)] if not model]
@@ -798,13 +801,6 @@ except OSError:
     # ... (Download and load logic) ...
     print("ERROR: Failed to load or download SpaCy model 'en_core_web_sm'.")
     nlp = None
-
-
-# 5. Embedding Model Loading (Keep as is)
-# ... (embedding_models_instances loading code) ...
-embedding_models_instances = {} # Initialize
-# ... load models ...
-print("Embedding models loaded.")
 
 
 # 6. Initialize Together Client (if key exists)
@@ -1386,7 +1382,7 @@ async def cluster_attributes_endpoint(
             raise HTTPException(status_code=500, detail=f"Attribute file not found: {attribute_path}")
 
         # Run clustering
-        results = run_clustering_only_pipeline(attribute_path, max_k)
+        results = run_clustering_only_pipeline(attribute_path, max_k,embedding_models_instances)
 
         if isinstance(results, dict) and "error" in results: raise HTTPException(status_code=500, detail=results["error"])
         # Save results to file for RAG endpoint to use
