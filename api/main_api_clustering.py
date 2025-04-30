@@ -1477,11 +1477,11 @@ async def identify_attributes_llm_endpoint(
     # Add checks for other necessary components if needed
 
     # --- Define File Paths ---
-    base_data_path = "data"
+    base_data_path = "data/"
     base_output_path = "/output"
     llm_output_base = "" # Separate output dir for LLM results
     cluster_file_name = "clusters_resQ_Sk_API_corrected.json"
-    cluster_file_path = os.path.join(base_output_path, cluster_file_name)
+    cluster_file_path = os.path.join(base_data_path, cluster_file_name)
     # Path to the structured attributes file used by the script
     structured_attributes_path = "data/filtered_data_attributes.json" # Based on script variable 'path' + 'filename'
     resource_path = os.path.join(base_data_path, "datasetRecursosBase.ndjson") # Based on script
