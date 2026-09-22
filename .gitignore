@@ -4,3 +4,10 @@ env/
 venv/
 .env
 env
+cluster_output/
+data/
+llm_output/
+output_rag/
+results/
+extras/
+api/main_api_clustering_v2.py
